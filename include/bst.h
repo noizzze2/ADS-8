@@ -4,6 +4,7 @@
 
 #include <string>
 #include <vector>
+#include <utility>
 #include <algorithm>
 
 template <typename T>
@@ -14,7 +15,7 @@ class BST {
     int count;
     Node* left;
     Node* right;
-    Node(const T& k) : key(k), count(1), left(nullptr), right(nullptr) {}
+    explicit Node(const T& k) : key(k), count(1), left(nullptr), right(nullptr) {}
   };
 
   Node* root;
@@ -38,7 +39,7 @@ class BST {
   }
 
   int depthNode(Node* node) const {
-    if (!node) return 0;
+    if (!node) return -1;
     return 1 + std::max(depthNode(node->left), depthNode(node->right));
   }
 
